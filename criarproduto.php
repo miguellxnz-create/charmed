@@ -1,6 +1,6 @@
 <?php
 session_start();
-include('conexao2.php'); // conexão com o banco de produtos
+include('conexao2.php'); 
 
 $msg = "";
 
@@ -10,19 +10,19 @@ if (isset($_POST['cadastrar'])) {
     $preco = $_POST['preco'];
     $descricao = $_POST['descricao'];
 
-   // Upload da imagem
+
     if (!empty($_FILES['imagem']['name'])) {
 
         $img_nome = $_FILES['imagem']['name'];
         $img_tmp = $_FILES['imagem']['tmp_name'];
 
-        // Caminho da pasta onde suas imagens ficam (PASTA /img/)
+        
         $destino = "img/" . $img_nome;
 
-        // Move a imagem para a pasta
+     
         if (move_uploaded_file($img_tmp, $destino)) {
 
-            // INSERE NO BANCO
+            
             $sql = "INSERT INTO produtos (nome, preco, descrição, imagem)
                     VALUES ('$nome', '$preco', '$descricao', '$img_nome')";
 
@@ -41,10 +41,10 @@ if (isset($_POST['cadastrar'])) {
     }
 }
 
-// EXCLUIR PRODUTO
+
 if (isset($_GET['excluir'])) {
     $id_excluir = intval($_GET['excluir']);
-    // Pega a imagem para excluir do servidor
+   
     $res = $mysqli->query("SELECT imagem FROM produtos WHERE id = $id_excluir");
     if ($res->num_rows > 0) {
         $produto = $res->fetch_assoc();
@@ -55,7 +55,7 @@ if (isset($_GET['excluir'])) {
     exit;
 }
 
-// PEGAR PRODUTOS
+
 $result = $mysqli->query("SELECT * FROM produtos ORDER BY id DESC");
 ?>
 
@@ -136,4 +136,5 @@ button:hover { background: linear-gradient(135deg, #a64fff, #c27fff); transform:
 </div>
 </body>
 </html>
+
  
