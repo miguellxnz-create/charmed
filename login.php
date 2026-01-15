@@ -15,7 +15,7 @@ if (isset($_POST['email']) && isset($_POST['senha'])) {
         $email = $mysqli->real_escape_string($_POST["email"]);
         $senha = $mysqli->real_escape_string($_POST["senha"]);
 
-        // LOGIN (SEM HASH)
+
         $sql_code = "SELECT * FROM usuario WHERE Email = '$email' AND senha = '$senha' LIMIT 1";
         $sql_query = $mysqli->query($sql_code);
 
@@ -53,14 +53,13 @@ if (isset($_POST['email']) && isset($_POST['senha'])) {
     --bg-page: #F9FAFB;
 }
 
-/* ---------------- GLOBAL ---------------- */
+
 body {
     margin: 0;
     background: var(--bg-page);
     font-family: 'Poppins', sans-serif;
 }
 
-/* ---------------- HEADER ---------------- */
 header {
     padding: 20px;
     background: var(--white);
@@ -82,7 +81,6 @@ header h1 {
     margin: 0;
 }
 
-/* ---------------- LOGIN CARD ---------------- */
 .login-box {
     max-width: 380px;
     margin: 60px auto;
@@ -99,7 +97,6 @@ header h1 {
     margin-bottom: 25px;
 }
 
-/* ---------------- INPUTS ---------------- */
 .input-group {
     margin-bottom: 18px;
 }
@@ -123,7 +120,6 @@ header h1 {
     border-color: var(--primary-dark);
 }
 
-/* ---------------- BUTTON ---------------- */
 .btn-login {
     width: 100%;
     padding: 14px;
@@ -143,7 +139,6 @@ header h1 {
     transform: scale(1.04);
 }
 
-/* ---------------- ERRO ---------------- */
 .error {
     background: #ffe3e3;
     color: var(--danger);
@@ -154,7 +149,6 @@ header h1 {
     margin-bottom: 15px;
 }
 
-/* ---------------- REGISTER LINK ---------------- */
 .register {
     text-align: center;
     margin-top: 18px;
@@ -171,7 +165,6 @@ header h1 {
     color: var(--primary-dark);
 }
 
-/* RESPONSIVO */
 @media(max-width: 500px) {
     header h1 {
         font-size: 1.1rem;
@@ -222,3 +215,4 @@ header h1 {
 
 </body>
 </html>
+
