@@ -1,6 +1,6 @@
 <?php
 session_start();
-include('conexao2.php'); // Conexão com o banco
+include('conexao2.php'); 
 
 if (!isset($_GET['termo']) || empty(trim($_GET['termo']))) {
     die("Nenhum termo de pesquisa informado!");
@@ -8,7 +8,7 @@ if (!isset($_GET['termo']) || empty(trim($_GET['termo']))) {
 
 $termo = $mysqli->real_escape_string(trim($_GET['termo']));
 
-// Busca produtos pelo nome
+
 $sql = "SELECT * FROM produtos WHERE nome LIKE '%$termo%'";
 $result = $mysqli->query($sql);
 ?>
@@ -59,3 +59,4 @@ if ($result->num_rows > 0) {
 
 </body>
 </html>
+
