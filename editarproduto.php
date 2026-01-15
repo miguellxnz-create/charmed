@@ -1,14 +1,12 @@
 <?php
 session_start();
-include('conexao2.php'); // conexão com o banco de produtos
-
+include('conexao2.php'); 
 if (!isset($_GET['id'])) {
     die("Produto não especificado!");
 }
 
 $produto_id = intval($_GET['id']);
 
-// PEGAR DADOS DO PRODUTO
 $res = $mysqli->query("SELECT * FROM produtos WHERE id = $produto_id");
 if ($res->num_rows == 0) {
     die("Produto não encontrado!");
@@ -17,7 +15,7 @@ if ($res->num_rows == 0) {
 $produto = $res->fetch_assoc();
 $msg = "";
 
-// ATUALIZAR PRODUTO
+
 if (isset($_POST['atualizar_produto'])) {
     $nome = $mysqli->real_escape_string($_POST['nome']);
     $preco = floatval($_POST['preco']);
@@ -25,7 +23,7 @@ if (isset($_POST['atualizar_produto'])) {
 
     $sql = "UPDATE produtos SET nome='$nome', preco=$preco, descrição='$descricao'";
 
-    // Verifica se enviou nova imagem
+
     if (isset($_FILES['imagem']) && $_FILES['imagem']['error'] == 0) {
         $pasta = 'img/';
         if (!is_dir($pasta)) mkdir($pasta, 0755, true);
@@ -35,7 +33,7 @@ if (isset($_POST['atualizar_produto'])) {
         $caminho = $pasta . $novo_nome;
 
         if (move_uploaded_file($_FILES['imagem']['tmp_name'], $caminho)) {
-            // Deleta imagem antiga
+     
             if (file_exists('img/'.$produto['imagem'])) unlink('img/'.$produto['imagem']);
             $sql .= ", imagem='$novo_nome'";
         } else {
@@ -47,7 +45,7 @@ if (isset($_POST['atualizar_produto'])) {
 
     if ($mysqli->query($sql)) {
         $msg = "Produto atualizado com sucesso!";
-        // Atualiza dados do produto na página
+  
         $res = $mysqli->query("SELECT * FROM produtos WHERE id = $produto_id");
         $produto = $res->fetch_assoc();
     } else {
@@ -105,3 +103,4 @@ img { max-width:200px; margin-bottom:15px; border-radius:12px; }
 </div>
 </body>
 </html>
+
