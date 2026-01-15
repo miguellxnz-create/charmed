@@ -2,13 +2,13 @@
 session_start();
 include('conexao.php');
 
-// usuário não logado → manda para login
+
 if (!isset($_SESSION['codigo'])) {
     header("Location: login.php");
     exit;
 }
 
-// BUSCAR DADOS DO USUÁRIO
+
 $codigo = $_SESSION['codigo'];
 $sql = $mysqli->query("SELECT * FROM usuario WHERE codigo = '$codigo'");
 $usuario = $sql->fetch_assoc();
@@ -38,14 +38,12 @@ $usuario = $sql->fetch_assoc();
     --danger: #ef4444;
 }
 
-/* =================== GLOBAL =================== */
 body {
     margin: 0;
     background: var(--bg-page);
     font-family: 'Poppins', sans-serif;
 }
 
-/* =================== HEADER =================== */
 header {
     background: var(--white);
     padding: 1rem;
@@ -70,7 +68,6 @@ header {
     color: var(--primary-dark);
 }
 
-/* =================== CONTAINER =================== */
 .container {
     max-width: 700px;
     margin: 45px auto;
@@ -80,7 +77,6 @@ header {
     box-shadow: var(--shadow);
 }
 
-/* =================== TÍTULO =================== */
 .container h2 {
     font-size: 1.8rem;
     text-align: center;
@@ -88,7 +84,6 @@ header {
     color: var(--primary-dark);
 }
 
-/* =================== INFO =================== */
 .info-box {
     background: var(--secondary);
     padding: 20px;
@@ -103,7 +98,6 @@ header {
     color: var(--text-dark);
 }
 
-/* =================== BOTÕES =================== */
 .btn-area {
     display: flex;
     flex-direction: column;
@@ -135,7 +129,6 @@ header {
     background: #dc2626;
 }
 
-/* RESPONSIVIDADE */
 @media(max-width: 600px) {
     .container {
         margin: 25px 14px;
@@ -156,7 +149,6 @@ header {
 </head>
 <body>
 
-<!-- HEADER -->
 <header>
     <a href="painel.php" class="back-btn">
         <i class="ph ph-arrow-left"></i>
@@ -184,3 +176,4 @@ header {
 
 </body>
 </html>
+
