@@ -12,7 +12,6 @@ if ($result->num_rows == 0) { die("Produto não encontrado!"); }
 
 $produto = $result->fetch_assoc();
 
-// Imagens extras
 $imagens_extra = [];
 if (!empty($produto['imagens'])) {
     $imagens_extra = explode(',', $produto['imagens']);
@@ -59,7 +58,6 @@ $logado = isset($_SESSION['codigo']);
 
 body{ background:var(--bg-page); color:var(--text-dark); }
 
-/* HEADER */
 header{
     background:var(--white);
     position:sticky;
@@ -82,7 +80,6 @@ header{
     color:var(--primary);
 }
 
-/* botão voltar dentro do header */
 .brand-flex{
     display:flex;
     align-items:center;
@@ -113,7 +110,6 @@ header{
     gap:12px;
 }
 
-/* BUSCA */
 .search-container{ position:relative; }
 .search-input{
     width:100%;
@@ -130,7 +126,6 @@ header{
     color:var(--text-gray);
 }
 
-/* PÁGINA DO PRODUTO */
 .product-page{
     width:95%;
     max-width:1100px;
@@ -140,7 +135,6 @@ header{
     flex-wrap:wrap;
 }
 
-/* ESQUERDA */
 .left-box{
     flex:1 1 450px;
 }
@@ -174,7 +168,6 @@ header{
     border-color:var(--primary);
 }
 
-/* DIREITA */
 .right-box{
     flex:1 1 450px;
     background:var(--white);
@@ -210,7 +203,6 @@ header{
 }
 .star{ color:var(--primary); }
 
-/* BOTÕES */
 .btn{
     width:100%;
     padding:14px;
@@ -237,7 +229,6 @@ header{
     color:white;
 }
 
-/* RELACIONADOS */
 .related-products{
     width:95%;
     max-width:1100px;
@@ -270,7 +261,6 @@ header{
     border-radius:10px;
 }
 
-/* RESPONSIVO */
 @media (max-width:768px){
     .product-page{ flex-direction:column; }
 }
@@ -285,11 +275,9 @@ function zoomOut(img){ img.classList.remove("zoomed"); }
 </head>
 <body>
 
-<!-- HEADER COM BOTÃO VOLTAR -->
 <header>
     <div class="nav-top">
 
-        <!-- Botão de voltar dentro do título -->
         <div class="brand-flex">
             <a href="painel.php" class="icon-btn"><i class="ph ph-arrow-left"></i></a>
             <div class="brand">Charmed da Rebeca</div>
@@ -308,10 +296,8 @@ function zoomOut(img){ img.classList.remove("zoomed"); }
     </form>
 </header>
 
-<!-- ÁREA DO PRODUTO -->
 <div class="product-page">
 
-    <!-- ESQUERDA -->
     <div class="left-box">
         <div class="main-img-container">
             <img id="main-img" src="img/<?php echo $produto['imagem']; ?>" 
@@ -327,7 +313,6 @@ function zoomOut(img){ img.classList.remove("zoomed"); }
         <?php endif; ?>
     </div>
 
-    <!-- DIREITA -->
     <div class="right-box">
 
         <h1><?php echo $produto['nome']; ?></h1>
@@ -338,7 +323,6 @@ function zoomOut(img){ img.classList.remove("zoomed"); }
             <?php echo $produto['estoque']>0 ? "Em estoque" : "Indisponível"; ?>
         </div>
 
-        <!-- Avaliações -->
         <div class="avaliacoes">
             <?php foreach($avaliacoes as $a): ?>
                 <div class="avaliacao-item">
@@ -349,7 +333,6 @@ function zoomOut(img){ img.classList.remove("zoomed"); }
             <?php endforeach; ?>
         </div>
 
-        <!-- Botões -->
         <form method="POST" action="<?php echo $logado ? 'painel.php' : 'protect.php'; ?>">
             <input type="hidden" name="produto_nome" value="<?php echo $produto['nome']; ?>">
             <input type="hidden" name="produto_img" value="<?php echo $produto['imagem']; ?>">
@@ -365,7 +348,6 @@ function zoomOut(img){ img.classList.remove("zoomed"); }
     </div>
 </div>
 
-<!-- PRODUTOS RELACIONADOS -->
 <div class="related-products">
     <h2 style="margin-bottom:10px;">Produtos Relacionados</h2>
 
@@ -383,3 +365,4 @@ function zoomOut(img){ img.classList.remove("zoomed"); }
 
 </body>
 </html>
+
