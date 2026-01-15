@@ -25,7 +25,6 @@ if (isset($_POST['add_carrinho'])) {
 <script src="https://unpkg.com/@phosphor-icons/web"></script>
 
 <style>
-/* ======================== NOVO DESIGN MODERNO RESPONSIVO ======================== */
 
 :root {
     --primary: #8B5CF6;
@@ -50,7 +49,6 @@ body {
     padding-bottom: 60px;
 }
 
-/* HEADER */
 header {
     background: var(--white);
     padding: 1rem;
@@ -95,7 +93,6 @@ header {
     transform: scale(1.05);
 }
 
-/* SEARCH BAR */
 .search-container {
     margin-top: 12px;
     position: relative;
@@ -124,7 +121,6 @@ header {
     color: var(--text-gray);
 }
 
-/* GRID PRODUTOS */
 main {
     padding: 1.5rem;
 }
@@ -204,7 +200,6 @@ main {
     background: var(--primary-dark);
 }
 
-/* DESKTOP */
 @media (min-width: 768px) {
     .product-grid {
         grid-template-columns: repeat(4, 1fr);
@@ -283,3 +278,4 @@ main {
 
 </body>
 </html>
+
