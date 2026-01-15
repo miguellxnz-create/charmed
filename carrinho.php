@@ -6,7 +6,7 @@ if (!isset($_SESSION['codigo'])) {
     die("Você precisa estar logado para acessar o carrinho!");
 }
 
-// Remover item
+
 if (isset($_GET['remover'])) {
     $id_remover = intval($_GET['remover']);
     $mysqli->query("DELETE FROM carrinho WHERE id = $id_remover AND usuario_id = ".$_SESSION['codigo']);
@@ -14,7 +14,7 @@ if (isset($_GET['remover'])) {
     exit;
 }
 
-// Atualizar quantidade
+
 if (isset($_POST['atualizar_quantidade'])) {
     foreach ($_POST['quantidade'] as $id => $qtd) {
         $qtd = max(1, intval($qtd));
@@ -59,7 +59,7 @@ body {
     font-family: 'Poppins', sans-serif;
 }
 
-/* Header */
+
 header {
     background: var(--white);
     padding: 1rem;
@@ -84,7 +84,7 @@ header {
     color: var(--primary-dark);
 }
 
-/* Carrinho Container */
+
 .container {
     max-width: 900px;
     margin: 20px auto;
@@ -94,7 +94,7 @@ header {
     box-shadow: var(--shadow);
 }
 
-/* Tabela */
+
 table {
     width: 100%;
     border-collapse: collapse;
@@ -120,7 +120,7 @@ td {
     object-fit: cover;
 }
 
-/* Inputs */
+
 input[type="number"] {
     width: 55px;
     padding: 6px;
@@ -129,7 +129,7 @@ input[type="number"] {
     text-align: center;
 }
 
-/* Botões */
+
 .btn {
     padding: 10px 20px;
     background: var(--primary);
@@ -156,7 +156,7 @@ input[type="number"] {
     background: #dc2626;
 }
 
-/* Total */
+
 .total-box {
     margin-top: 20px;
     font-size: 1.3rem;
@@ -165,7 +165,7 @@ input[type="number"] {
     text-align: right;
 }
 
-/* Responsivo */
+
 @media (max-width: 700px) {
     td img {
         width: 55px;
@@ -263,3 +263,4 @@ if ($result->num_rows > 0) {
 
 </body>
 </html>
+
