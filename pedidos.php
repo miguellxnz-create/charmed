@@ -2,7 +2,6 @@
 session_start();
 include('conexao2.php');
 
-// Verifica se está logado
 if (!isset($_SESSION['codigo'])) {
     header("Location: login.php");
     exit;
@@ -10,7 +9,6 @@ if (!isset($_SESSION['codigo'])) {
 
 $usuarioCodigo = $_SESSION['codigo'];
 
-// Pega pedidos do usuário
 $pedido_id = $mysqli->query("SELECT * FROM pedidos WHERE usuario_id = $usuarioCodigo ORDER BY id DESC");
 
 ?>
@@ -40,7 +38,6 @@ body {
     color: #333;
 }
 
-/* NAVBAR */
 nav {
     background: #5a1bb3;
     padding: 15px 20px;
@@ -69,7 +66,6 @@ nav a:hover {
     align-items: center;
 }
 
-/* DROPDOWN */
 .dropdown {
     position: relative;
 }
@@ -90,7 +86,6 @@ nav a:hover {
 }
 .dropdown:hover .dropdown-menu { display: block; }
 
-/* CONTAINER */
 .orders-container {
     max-width: 900px;
     margin: 40px auto;
@@ -102,7 +97,6 @@ nav a:hover {
     margin-bottom: 30px;
 }
 
-/* CARD DE PEDIDOS */
 .order-box {
     background: #fff;
     border-radius: 14px;
@@ -116,7 +110,6 @@ nav a:hover {
 .order-info h3 { margin: 0; color: #5a1bb3; }
 .order-info p { margin: 4px 0; }
 
-/* STATUS */
 .status {
     padding: 5px 10px;
     border-radius: 8px;
@@ -127,7 +120,6 @@ nav a:hover {
 .status-enviado { background: #ffe8a3; color: #8f6c00; }
 .status-aguardando { background: #ffd4d4; color: #b30000; }
 
-/* BOTÃO DETALHES */
 .details-btn {
     background: #5a1bb3;
     color: #fff;
@@ -140,7 +132,6 @@ nav a:hover {
 }
 .details-btn:hover { background: #7d2cff; transform: scale(1.05); }
 
-/* RESPONSIVO */
 @media(max-width: 600px) {
     .order-box { flex-direction: column; align-items: flex-start; gap: 10px; }
     .details-btn { align-self: flex-end; }
@@ -199,3 +190,4 @@ nav a:hover {
 
 </body>
 </html>
+
