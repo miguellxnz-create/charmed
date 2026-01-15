@@ -1,21 +1,17 @@
 <?php
 session_start();
-include('conexao2.php'); // Conexão com o banco de dados
-
-// Verifica se o usuário está logado
+include('conexao2.php');
 if (!isset($_SESSION['codigo'])) {
     header("Location: login.php");
     exit();
 }
 
-// Verifica se o ID do pedido foi passado
 if (!isset($_GET['pedido_id'])) {
     die("Pedido não especificado!");
 }
 
 $pedido_id = intval($_GET['pedido_id']);
 
-// Busca os dados do pedido no banco de dados
 $sql = "SELECT * FROM pedidos WHERE id = $pedido_id AND usuario_id = " . $_SESSION['codigo'];
 $result = $mysqli->query($sql);
 
@@ -25,14 +21,11 @@ if ($result->num_rows == 0) {
 
 $pedido = $result->fetch_assoc();
 
-// Verifica o status do pagamento
 $status_pagamento = $pedido['status_pagamento'];
 
-// Processo de pagamento - Simulação de pagamento
 if (isset($_POST['realizar_pagamento'])) {
-    $status_pagamento = 'aprovado';  // Simulando pagamento aprovado
+    $status_pagamento = 'aprovado'; 
 
-    // Atualiza o status de pagamento no banco
     $sql_update = "UPDATE pedidos SET status_pagamento = '$status_pagamento' WHERE id = $pedido_id";
     if ($mysqli->query($sql_update)) {
         $mensagem = "Pagamento aprovado com sucesso!";
@@ -84,3 +77,4 @@ if (isset($_POST['realizar_pagamento'])) {
 
 </body>
 </html>
+
