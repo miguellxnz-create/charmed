@@ -10,7 +10,7 @@ $usuario_id = $_SESSION['codigo'];
 $produtos_checkout = [];
 $total = 0;
 
-// 1) Produto único
+
 if (isset($_GET['produto_id'])) {
     $produto_id = intval($_GET['produto_id']);
     $sql = "SELECT * FROM produtos WHERE id = $produto_id";
@@ -25,7 +25,7 @@ if (isset($_GET['produto_id'])) {
     $produtos_checkout[] = $produto;
     $total = $produto['preco'];
 
-// 2) Carrinho inteiro
+
 } else {
     $sql = "SELECT * FROM carrinho WHERE usuario_id = $usuario_id";
     $resultado = $mysqli->query($sql);
@@ -41,7 +41,7 @@ if (isset($_GET['produto_id'])) {
     }
 }
 
-// 3) Processar formulário
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $nome_completo = $_POST['nome_completo'];
     $telefone = $_POST['telefone'];
@@ -104,7 +104,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 *{margin:0;padding:0;box-sizing:border-box;font-family:"Poppins",sans-serif;}
 body{background:var(--bg-page);color:var(--text-dark);}
 
-/* HEADER */
+
 header{
     background:var(--white);
     padding:1rem;
@@ -147,7 +147,7 @@ header{
     color:var(--primary);
 }
 
-/* CONTEÚDO */
+
 .checkout-container{
     width:95%;
     max-width:1100px;
@@ -157,7 +157,7 @@ header{
     flex-wrap:wrap;
 }
 
-/* CARTÕES */
+
 .card{
     background:var(--white);
     padding:1.5rem;
@@ -187,7 +187,7 @@ input, select{
     background:#F3F4F6;
 }
 
-/* 🔥 A ÚNICA COISA ALTERADA AQUI */
+
 .radio-group{
     margin-top:16px;
     display:flex;
@@ -204,7 +204,7 @@ input, select{
     margin-bottom:6px;
 }
 
-/* RESUMO */
+
 .resumo-item{
     padding:10px 0;
     border-bottom:1px solid #eee;
@@ -217,7 +217,7 @@ input, select{
     margin-top:1rem;
 }
 
-/* BOTÃO */
+
 .btn-finalizar{
     width:100%;
     padding:16px;
@@ -265,7 +265,7 @@ input:focus, textarea:focus, select:focus {
 
 <div class="checkout-container">
 
-    <!-- ENDEREÇO -->
+
     <form method="POST" class="card">
         <h2>Endereço de Entrega</h2>
 
@@ -296,7 +296,7 @@ input:focus, textarea:focus, select:focus {
         <label>Estado</label>
         <input type="text" name="estado" required>
 
-        <!-- MÉTODO DE PAGAMENTO -->
+
         <h2 style="margin-top:20px;">Pagamento</h2>
 
         <div class="radio-group">
@@ -328,7 +328,7 @@ input:focus, textarea:focus, select:focus {
 
     </form>
 
-    <!-- RESUMO DO PEDIDO -->
+  
     <div class="card">
         <h2>Resumo do Pedido</h2>
 
@@ -358,3 +358,4 @@ radios.forEach(r => {
 
 </body>
 </html>
+
