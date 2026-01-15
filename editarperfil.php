@@ -2,7 +2,7 @@
 session_start();
 include('conexao.php');
 
-// Se não estiver logado
+
 if (!isset($_SESSION['codigo'])) {
     header("Location: login.php");
     exit;
@@ -10,11 +10,11 @@ if (!isset($_SESSION['codigo'])) {
 
 $codigo = $_SESSION['codigo'];
 
-// Carrega dados atuais
+
 $sql = $mysqli->query("SELECT * FROM usuario WHERE codigo = '$codigo'");
 $usuario = $sql->fetch_assoc();
 
-// Atualização
+
 if (isset($_POST['nome'])) {
 
     $nome = $mysqli->real_escape_string($_POST['nome']);
@@ -63,7 +63,7 @@ body {
     font-family: 'Poppins', sans-serif;
 }
 
-/* Header */
+
 header {
     padding: 20px;
     display: flex;
@@ -85,7 +85,6 @@ header h1 {
     margin: 0;
 }
 
-/* Card */
 .edit-box {
     max-width: 420px;
     margin: 50px auto;
@@ -102,7 +101,7 @@ header h1 {
     font-size: 1.8rem;
 }
 
-/* Inputs */
+
 .input-group {
     margin-bottom: 18px;
 }
@@ -126,7 +125,7 @@ header h1 {
     border-color: var(--primary-dark);
 }
 
-/* Botão */
+
 .btn-save {
     width: 100%;
     padding: 14px;
@@ -146,7 +145,7 @@ header h1 {
     transform: scale(1.03);
 }
 
-/* Responsivo */
+
 @media (max-width: 500px) {
     .edit-box {
         margin: 30px 15px;
@@ -193,3 +192,4 @@ header h1 {
 
 </body>
 </html>
+
