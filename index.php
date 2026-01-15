@@ -2,7 +2,6 @@
 session_start();
 include('conexao2.php'); 
 
-// Adicionar ao carrinho
 if (isset($_POST['add_carrinho'])) {
     $usuario_id = $_SESSION['codigo'];
     $nome = $_POST['produto_nome'];
@@ -87,7 +86,7 @@ if (isset($_POST['add_carrinho'])) {
             transition: .2s;
         }
 
-        /* SEARCH */
+       
         .search-container {
             position: relative;
         }
@@ -110,7 +109,6 @@ if (isset($_POST['add_carrinho'])) {
             font-size: 20px;
         }
 
-        /* GRID PRODUTOS */
         main { padding: 1.5rem 1rem; }
 
         .section-title {
@@ -125,7 +123,7 @@ if (isset($_POST['add_carrinho'])) {
             gap: 1rem;
         }
 
-        /* CARD PRODUTO */
+       
         .product-card {
             background: var(--white);
             border-radius: 16px;
@@ -185,7 +183,6 @@ if (isset($_POST['add_carrinho'])) {
             display: block;
         }
 
-        /* DESKTOP */
         @media (min-width: 768px) {
             .product-grid { grid-template-columns: repeat(4, 1fr); }
             body { max-width: 1100px; margin: auto; }
@@ -204,7 +201,7 @@ if (isset($_POST['add_carrinho'])) {
         </div>
     </div>
 
-    <!-- BARRA DE PESQUISA FUNCIONAL -->
+
     <form action="busca.php" method="get" class="search-container">
         <i class="ph ph-magnifying-glass search-icon"></i>
         <input type="text" name="termo" class="search-input" placeholder="Buscar produtos..." required>
@@ -244,3 +241,4 @@ if (isset($_POST['add_carrinho'])) {
 
 </body>
 </html>
+
